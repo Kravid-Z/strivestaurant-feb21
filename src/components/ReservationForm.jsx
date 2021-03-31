@@ -7,6 +7,7 @@ import { Button, Form, Modal, Alert } from "react-bootstrap";
 // smoking
 // dateTime
 // specialRequests
+let stringfunc;
 
 class ReservationForm extends React.Component {
   state = {
@@ -16,13 +17,25 @@ class ReservationForm extends React.Component {
       numberOfPersons: 1,
       smoking: false,
       dateTime: "",
-      specialRequests: "",
+      specialRequests: {
+        id: "testOne1KD",
+        name: "testing our APIComments",
+        randomN: (min, max) => Math.random() * (max - min) + min,
+        // get printN() {
+        //   return console.log(
+        //     this.state.reservation.specialRequests.randomN(1, 10)
+        //   );
+      },
     },
     show: false,
     setShow: false,
     variant: "",
     MessgModal: "",
     titleModal: "",
+  };
+  toStringMyObjFunc = () => {
+    stringfunc = this.state.reservation.specialRequests.randomN.toString();
+    console.log(stringfunc);
   };
 
   handleClose = () => this.setState({ show: false, setShow: false });
@@ -31,7 +44,7 @@ class ReservationForm extends React.Component {
   handleInput = (e) => {
     let id = e.target.id; // name or phone or numberOfPersons
     console.log("ID OF THIS INPUT FIELD IS", id);
-
+      
     this.setState({
       reservation: {
         ...this.state.reservation,
@@ -39,7 +52,6 @@ class ReservationForm extends React.Component {
       },
     });
   };
-
   submitData = async (e) => {
     e.preventDefault();
     try {
@@ -83,6 +95,8 @@ class ReservationForm extends React.Component {
   };
 
   render() {
+    console.log(this.state);
+    this.toStringMyObjFunc();
     return (
       <>
         <Modal show={this.state.show} onHide={this.handleClose}>

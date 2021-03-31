@@ -56,20 +56,16 @@ class Home extends React.Component {
           </Col>
         </Row>
         <Row className="justify-content-center mt-5">
-          <Col xs={8}>
+          <Col xs={8} md={3}>
             <Reservations />
           </Col>
-        </Row>
-        <Row className="justify-content-center mt-5">
-          <Col xs={8}>
-            <ReservationForm />
-          </Col>
-        </Row>
-        <Row className="justify-content-center mt-5">
-          <Col xs={8}>
-            {this.state.selectedDish.name != "Amatriciana" && (
+          <Col xs={8} md={3}>
+            {this.state.selectedDish.name !== "Amatriciana" && (
               <DishComments selectedDish={this.state.selectedDish} />
             )}
+          </Col>
+          <Col xs={8} md={6}>
+            <ReservationForm />
           </Col>
         </Row>
       </Container>
